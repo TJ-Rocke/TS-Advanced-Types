@@ -12,13 +12,17 @@ const dbSource: DBSource = {
 
 type Source = FileSource | DBSource;
 
+function isFile(source: Source) {
+  return source.type === "file";
+}
+
 function loadData(source: Source) {
   // Open + read file OR reach out to database server
   // load file based on the source, find out which parameter type is coming in
   // need a type guard - an if check that ensures that the proper piece of code is executed based on what kind of values we can ge, looking for certain properties
   // if ("path" in source) {
-  if (source.type === "file") {
-    source.path;
+  if (isFile(source)) {
+    // source.path;
     // source.path; => use that to open the file
     return;
   }
