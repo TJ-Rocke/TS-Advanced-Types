@@ -6,3 +6,9 @@ let store: DataStore = {};
 // ...
 store.id = 5;
 store.isOpen = false;
+
+let roles = ["admin", "guest", "editor"] as const; // simply tells ts "when inferring the type for this variable do it as narrow as possible dont infer a broad type like a string array"
+// roles.push("max"); // will get error because cant edit because it is now readonly after the narrow type inference
+const firstRole = roles[0];
+
+let someObj: Record<string, string | number | boolean>; // essentially the same as DataStore ^
